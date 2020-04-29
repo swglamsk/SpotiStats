@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import * as $ from "jquery";
 import logo from './logo.svg';
 import './App.css';
@@ -7,75 +8,46 @@ import Player from "./Player";
 import hash from "./hash";
 
 import SpotifyWebApi from 'spotify-web-api-js';
+import { getToken } from './store/token/selectors';
+import { getQueryParameter } from './utils/getQueryParameter';
+import { getAccessToken } from './utils/getAccessToken';
+import { getAuthorizationCode } from './utils/getAuthorizationCode';
+import { addToken } from './store/token/actions';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      token: null,
-      item: {
-        album: {
-          images: [{ url: "" }]
-        },
-        name: "",
-        artists: [{ name: "" }],
-        duration_ms: 0
-      },
-      is_playing: "Paused",
-      progress_ms: 0
-    };
-  }
-  componentDidMount() {
-    // Set token
-    let _token = hash.access_token;
+const App = () => {
+    const [hasCredentials, setHasCredentials] = React.useState(false);
+    const dispatch = useDispatch();
 
-    if (_token) {
-      // Set token
-      this.setState({
-        token: _token
-      });
-      this.getCurrentlyPlaying(_token);
-    }
-  }
-
-  
-  async getCurrentlyPlaying(token) {
-    // Make a call using the token
-    var spotifyApi = new SpotifyWebApi();
-    spotifyApi.setAccessToken(token);
-    let current = await spotifyApi.getMyCurrentPlayingTrack();
-    console.log(current);
-    this.setState({item: current.item,
-                  is_playing: current.is_playing,
-                  progress_ms: current.progress_ms});
-  }
-
-  render() {
+    React.useEffect(() => {
+        const sessionToken = sessionStorage.getItem('token');
+        if(sessionToken){
+            dispatch(addToken(sessionToken));
+            setHasCredentials(true);
+        }
+        else {
+            const code = getQueryParameter('code');
+            console.log(code);
+            if(code){
+                getAccessToken(code).then((data) => {
+                    console.log(data);
+                    if(data.access_token){
+                        dispatch(addToken(data.access_token));
+                        sessionStorage.setItem('token', data.access_token);
+                        setHasCredentials(true);
+                    }
+                });
+            }
+        };
+    }, [dispatch, hasCredentials]);
+    const token = useSelector((state) => getToken(state))
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          {!this.state.token && (
-            <a
-              className="btn btn--loginApp-link"
-              href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
-                "%20"
-              )}&response_type=token&show_dialog=true`}
-            >
-              Login to Spotify
-            </a>
-          )}
-          {this.state.token && (
-            <Player
-              item={this.state.item}
-              is_playing={this.state.is_playing}
-              progress_ms={this.progress_ms}
-            />
-          )}
-        </header>
-      </div>
+        hasCredentials 
+        ? <Player token={token}/>
+        : <div>
+            Not logged in
+            <button onClick={() => getAuthorizationCode()}>Log in</button>
+        </div>
     );
-  }
-}
+};
 
 export default App;
