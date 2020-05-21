@@ -6,13 +6,13 @@ import './App.css';
 import { authEndpoint, clientId, redirectUri, scopes } from "./config";
 import Player from "./Player";
 import hash from "./hash";
-
 import SpotifyWebApi from 'spotify-web-api-js';
 import { getToken } from './store/token/selectors';
 import { getQueryParameter } from './utils/getQueryParameter';
 import { getAccessToken } from './utils/getAccessToken';
 import { getAuthorizationCode } from './utils/getAuthorizationCode';
 import { addToken } from './store/token/actions';
+import LandingPage from "./LandingPage"
 
 const App = () => {
     const [hasCredentials, setHasCredentials] = React.useState(false);
@@ -43,10 +43,7 @@ const App = () => {
     return (
         hasCredentials 
         ? <Player token={token}/>
-        : <div>
-            Not logged in
-            <button onClick={() => getAuthorizationCode()}>Log in</button>
-        </div>
+        : <LandingPage/>
     );
 };
 
