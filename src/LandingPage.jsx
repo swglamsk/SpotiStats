@@ -5,7 +5,7 @@ import { Box, Button, Grid } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
 import { withStyles } from "@material-ui/core/styles";
 import { FormatListNumbered, Folder, TrendingUp } from "@material-ui/icons";
-
+import {useHistory} from "react-router-dom"
 const ColorButton = withStyles((theme) => ({
   root: {
     boxShadow: theme.shadows[5],
@@ -19,14 +19,17 @@ const ColorButton = withStyles((theme) => ({
 }))(Button);
 
 const LandingPage = () => {
+  let history = useHistory()
+
   return (
     <div>
       <div className="topnav">
-        <a href="#home">Recent tracks</a>
+        <a href ="#test" onClick={() => history.push("/player")} >Recent tracks</a>
         <a href="#news">Top albums and tracks</a>
         <a href="#contact">Compare artists</a>
         <a href="#about">Log in</a>
       </div>
+      
       <div className="containerLogin">
         <Box
           component="div"
