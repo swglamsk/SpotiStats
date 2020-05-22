@@ -2,15 +2,18 @@ import React from "react";
 
 import SpotifyWebApi from 'spotify-web-api-js';
 import "./Player.css";
+import { getToken} from "./store/token/selectors";
+import {useSelector} from "react-redux"
 
-const Player = ({ token }) => {
+const Player = () => {
 
     const [state, setState] = React.useState({
         item: null,
         is_playing: null,
         progress_ms: null
     });
-
+    const token = useSelector((state) => getToken(state))
+    console.log(token)
     React.useEffect(() => {
         const getCurrentlyPlaying = async () => {
             // Make a call using the token
