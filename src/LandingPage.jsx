@@ -69,9 +69,14 @@ const LandingPage = () => {
         >
           <h2>SpotiStats </h2>
           Check informations about your music <br />
-          {token ? (<>
-            <img className = "profilepic" src = {state.profileImageURL} alt="yourpic"/>
-            Hello {state.name} :)
+          {token ? (
+            <>
+              <img
+                className="profilepic"
+                src={state.profileImageURL}
+                alt="yourpic"
+              />
+              Hello {state.name} :)
             </>
           ) : (
             <>
