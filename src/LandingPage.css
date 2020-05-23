@@ -27,31 +27,31 @@
   display: flex;
   justify-content: center;
 }
-.boxLogin{
+.boxLogin {
   align-items: center;
   display: flex;
   flex-direction: column;
 }
-div .buttonLogin{
+div .buttonLogin {
   margin-top: 8px;
 }
 
-.gridInfo{
+.gridInfo {
   border-top: 2px solid black;
-  width:100%;
+  width: 100%;
 }
-.gridInfo>*{
-  flex:1
+.gridInfo > * {
+  flex: 1;
 }
-.gridItem{
+.gridItem {
   display: flex;
   flex-direction: column;
 }
-.gridItemChild{
-  display:flex;
+.gridItemChild {
+  display: flex;
   align-items: center;
 }
-.gridIcon{
+.gridIcon {
   display: flex;
   font-size: 50px;
   justify-content: center;
@@ -60,8 +60,13 @@ div .buttonLogin{
   border-radius: 50%;
   padding: 8px;
 }
-.gridText{
+.gridText {
   font-weight: bold;
-  flex:1;
+  flex: 1;
   text-align: center;
+}
+.profilepic{
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
 }

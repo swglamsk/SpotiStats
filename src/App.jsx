@@ -34,7 +34,6 @@ const App = () => {
       }
     }
   }, [dispatch, hasCredentials]);
-  const token = useSelector((state) => getToken(state));
   return (
     // hasCredentials
     // ? <Player token={token}/>
