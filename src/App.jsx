@@ -33,14 +33,13 @@ const App = () => {
       }
     }
   }, [dispatch, hasCredentials]);
-  const token = useSelector((state) => getToken(state));
   return (
     // hasCredentials
     // ? <Player token={token}/>
     // : <LandingPage/>
     <BrowserRouter>
-    <Route exact path = "/" component = {LandingPage}/>
-    <Route path = "/player" component = {Player}/>
+      <Route exact path="/" component={LandingPage} />
+      <Route path="/player" component={Player} />
     </BrowserRouter>
   );
 };
