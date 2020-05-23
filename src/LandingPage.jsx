@@ -50,9 +50,8 @@ const LandingPage = () => {
   return (
     <div>
       <div className="topnav">
-        <a href="#test" onClick={() => history.push("/player")}>
-          Recent tracks
-        </a>
+        <a href ="#test" onClick={() => history.push("/recent")} >Recent tracks</a>
+
         <a href="#news">Top albums and tracks</a>
         <a href="#contact">Compare artists</a>
         {token ? <a href="#about">Log out</a> : <a href="#about">Log in</a>}
