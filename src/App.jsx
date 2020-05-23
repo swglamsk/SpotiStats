@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./App.css";
 import Player from "./Player";
+import RecentSongs from "./RecentSongs";
 import { getToken } from "./store/token/selectors";
 import { getQueryParameter } from "./utils/getQueryParameter";
 import { getAccessToken } from "./utils/getAccessToken";
@@ -40,7 +41,7 @@ const App = () => {
     // : <LandingPage/>
     <BrowserRouter>
     <Route exact path = "/" component = {LandingPage}/>
-    <Route path = "/player" component = {Player}/>
+    <Route path = "/recent" component = {RecentSongs}/>
     </BrowserRouter>
   );
 };
