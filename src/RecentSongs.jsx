@@ -40,6 +40,7 @@ const RecentSongs = () => {
       let spotifyApi = new SpotifyWebApi();
       spotifyApi.setAccessToken(token);
       let recent = await spotifyApi.getMyRecentlyPlayedTracks({ limit: 50 });
+      //console.log("elo melo recent.items")
       console.log(recent.items);
       setState({
         items: recent.items,

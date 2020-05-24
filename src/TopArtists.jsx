@@ -39,7 +39,8 @@ const TopArtists = () => {
       // Make a call using the token
       let spotifyApi = new SpotifyWebApi();
       spotifyApi.setAccessToken(token);
-      let artists = await spotifyApi.getMyTopArtists({ limit: 9 });
+      let artists = await spotifyApi.getMyTopArtists({ "limit": "9" });
+      console.log("elo melo artists.items")
       console.log(artists.items);
       setState({
         items: artists.items,
@@ -51,13 +52,13 @@ const TopArtists = () => {
     }
   }, [token]);
 
-  return (
+  return ( 
     <div>
       <div className="topnav">
         <a href="#test" onClick={() => history.push("/recent")}>
-          Top artists
+          Recent tracks
         </a>
-        <a href="#news">Top albums and tracks</a>
+        <a href="#news" onClick={() => history.push("/top-artists")}>Top albums and tracks</a>
         <a href="#contact">Compare artists</a>
         <a href="#about">Log in</a>
       </div>
@@ -89,10 +90,9 @@ const TopArtists = () => {
             <div className="gridItemChild">
               <div className="gridText">
                 Top Artists List
-                console.log(state.items)
               </div>
             </div>
-            <div>{state.items ? <ArtistsTable items={state.items}/> : <></>}</div>
+            <div>{state.items ? <ArtistsTable items={state.items}/> : <></>} </div>
           </Grid>
         </Grid>
       </div>

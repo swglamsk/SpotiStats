@@ -24,22 +24,14 @@ const ArtistsTable = (items) => {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Photo</TableCell>
             <TableCell>Name</TableCell>
-            //<TableCell>Songname</TableCell>
-            //<TableCell>Album</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {items.items.map((row) => (
-            <TableRow key={row.artists.name}>
+            <TableRow key={row.id}>
                 
-              <TableCell component="th" scope="row">
-                <img className="artistPhoto" src={row.artist.images[0].url} alt='pic'/>
-              </TableCell>
-              <TableCell>{row.track.artists[0].name}</TableCell>
-              //<TableCell>{row.track.name}</TableCell>
-              //<TableCell>{row.track.album.name}</TableCell>
+              <TableCell>{row.name}</TableCell>
             </TableRow>
           ))}
         </TableBody>
