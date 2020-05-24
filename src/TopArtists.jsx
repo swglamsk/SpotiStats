@@ -4,11 +4,13 @@ import "./RecentSongs.css";
 import { Box, Button, Grid } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
 import { withStyles } from "@material-ui/core/styles";
+import { FormatListNumbered, Folder, TrendingUp } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getToken } from "./store/token/selectors";
 import SpotifyWebApi from "spotify-web-api-js";
-import RecentTable from "./RecentTable"
+import ArtistsTable from "./ArtistsTable"
+import TopTracks from "./TopTracks"
 
 const ColorButton = withStyles((theme) => ({
   root: {
@@ -23,7 +25,7 @@ const ColorButton = withStyles((theme) => ({
 }))(Button);
 
 
-const RecentSongs = () => {
+const TopArtists = () => {
   let history = useHistory();
 
   const [state, setState] = React.useState({
@@ -34,37 +36,37 @@ const RecentSongs = () => {
   console.log(token);
 
   React.useEffect(() => {
-    const getRecentlyPlayed = async () => {
+    const getTopArtists = async () => {
       // Make a call using the token
       let spotifyApi = new SpotifyWebApi();
       spotifyApi.setAccessToken(token);
-      let recent = await spotifyApi.getMyRecentlyPlayedTracks({ limit: 50 });
-      //console.log("elo melo recent.items")
-      console.log(recent.items);
+      let artists = await spotifyApi.getMyTopArtists({ "limit": "9" });
+      console.log("elo melo artists.items")
+      console.log(artists.items);
       setState({
-        items: recent.items,
+        items: artists.items,
       });
-    };
+    }; 
     if (token) {
       console.log(token);
-      getRecentlyPlayed();
+      getTopArtists();
     }
   }, [token]);
 
-  return (
+  return ( 
     <div>
       <div className="topnav">
         <a href="#test" onClick={() => history.push("/recent")}>
           Recent tracks
         </a>
-        <a href="#news">Top albums and tracks</a>
+        <a href="#news" onClick={() => history.push("/top-artists")}>Top albums and tracks</a>
         <a href="#contact">Compare artists</a>
         <a href="#about">Log in</a>
       </div>
 
       <div className="containerLogin">
         <Box
-          component="div"
+          component="div" 
           m={4}
           className="boxLogin"
           p={2}
@@ -88,14 +90,19 @@ const RecentSongs = () => {
           <Grid item className="gridItem">
             <div className="gridItemChild">
               <div className="gridText">
-                Recent Tracks List
+                Top Artists List
               </div>
+              <ColorButton
+                className="buttonTracks"
+                onClick={() => history.push("/top-tracks")}>
+                Switch to Top Tracks
+              </ColorButton>
             </div>
-            <div>{state.items ? <RecentTable items={state.items}/> : <></>}</div>
+            <div>{state.items ? <ArtistsTable items={state.items}/> : <></>} </div>
           </Grid>
         </Grid>
       </div>
     </div>
   );
 };
-export default RecentSongs;
+export default TopArtists;
