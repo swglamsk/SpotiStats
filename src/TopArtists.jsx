@@ -64,7 +64,7 @@ const TopArtists = () => {
 
       <div className="containerLogin">
         <Box
-          component="div"
+          component="div" 
           m={4}
           className="boxLogin"
           p={2}
