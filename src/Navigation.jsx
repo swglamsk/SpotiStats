@@ -16,6 +16,7 @@ export const Navigation = () => {
     const logOut = () => {
       dispatch(addToken(null));
       sessionStorage.removeItem("token");
+      history.push('/');
     };
 
     return (
