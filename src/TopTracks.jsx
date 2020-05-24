@@ -7,19 +7,22 @@ import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getToken } from "./store/token/selectors";
 import SpotifyWebApi from "spotify-web-api-js";
-import TracksTable from "./TracksTable"
+import { TopDisplayGrid } from "./TopDisplayGrid";
 
 const ColorButton = withStyles((theme) => ({
-  root: {
-    boxShadow: theme.shadows[5],
-    color: "white",
-    backgroundColor: green[500],
-    width: 250,
-    "&:hover": {
-      backgroundColor: green[700],
+    root: {
+      boxShadow: theme.shadows[5],
+      color: "white",
+      backgroundColor: green[500],
+      width: 250,
+      "&:hover": {
+        backgroundColor: green[700],
+      },
+      position: 'absolute',
+      right: 10,
+      top: 60
     },
-  },
-}))(Button);
+  }))(Button);
 
 
 const TopTracks = () => {
@@ -37,6 +40,7 @@ const TopTracks = () => {
       let spotifyApi = new SpotifyWebApi();
       spotifyApi.setAccessToken(token);
       let tracks = await spotifyApi.getMyTopTracks({ "limit": "9" });
+      console.log(tracks.items);
       setState({
         items: tracks.items,
       });
@@ -60,7 +64,7 @@ const TopTracks = () => {
                 Switch to Top Artists
               </ColorButton>
             </div>
-            <div>{state.items ? <TracksTable items={state.items}/> : <></>} </div>
+            <div>{state.items ? <TopDisplayGrid list={state.items} /> : <></>} </div>
           </Grid>
         </Grid>
     </div>
