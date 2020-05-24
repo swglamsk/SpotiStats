@@ -44,7 +44,7 @@ const TopArtists = () => {
       setState({
         items: artists.items,
       });
-    };
+    }; 
     if (token) {
       console.log(token);
       getTopArtists();
