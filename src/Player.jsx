@@ -32,7 +32,7 @@ const Player = () => {
   }, [token]);
 
   return (
-    state.item && (
+    state.item ? (
       <div className="main-wrapper">
         <div className="now-playing__img">
           <img src={state.item.album.images[0].url} alt="pic" />
@@ -54,6 +54,7 @@ const Player = () => {
         />
       </div>
     )
+    : null
   );
 };
 
