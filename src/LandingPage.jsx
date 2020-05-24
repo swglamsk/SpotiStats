@@ -5,10 +5,8 @@ import { Box, Button, Grid } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
 import { withStyles } from "@material-ui/core/styles";
 import { FormatListNumbered, Folder, TrendingUp } from "@material-ui/icons";
-import { useHistory } from "react-router-dom";
 import { getToken } from "./store/token/selectors";
-import { useSelector, useDispatch } from "react-redux";
-import { addToken } from "./store/token/actions";
+import { useSelector } from "react-redux";
 import SpotifyWebApi from "spotify-web-api-js";
 import Player from "./Player";
 const ColorButton = withStyles((theme) => ({
@@ -24,7 +22,6 @@ const ColorButton = withStyles((theme) => ({
 }))(Button);
 
 const LandingPage = () => {
-  const history = useHistory();
   const token = useSelector((state) => getToken(state));
   const [state, setState] = React.useState({
     id: null,
@@ -48,24 +45,8 @@ const LandingPage = () => {
     }
   }, [token]);
 
-  const dispatch = useDispatch();
-
-  const logOut = () => {
-    dispatch(addToken(null));
-    sessionStorage.removeItem("token");
-  };
-
   return (
     <div>
-      <div className="topnav">
-        <a href ="#test" onClick={() => history.push("/recent")} >Recent tracks</a>
-        <a href="#news" onClick={() => history.push("/top-artists")} >Top albums and tracks</a>
-        <a href="#contact">Compare artists</a>
-        {token
-            ? <a href="#" onClick={() => logOut()}>Log out</a>
-            : <a href="#" onClick={() => getAuthorizationCode()}>Log in</a>}
-      </div>
-
       <div className="containerLogin">
         <Box
           component="div"
