@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { getToken } from "./store/token/selectors";
 import SpotifyWebApi from "spotify-web-api-js";
 import ArtistsTable from "./ArtistsTable"
+import TopTracks from "./TopTracks"
 
 const ColorButton = withStyles((theme) => ({
   root: {
@@ -91,6 +92,11 @@ const TopArtists = () => {
               <div className="gridText">
                 Top Artists List
               </div>
+              <ColorButton
+                className="buttonTracks"
+                onClick={() => history.push("/top-tracks")}>
+                Switch to Top Tracks
+              </ColorButton>
             </div>
             <div>{state.items ? <ArtistsTable items={state.items}/> : <></>} </div>
           </Grid>

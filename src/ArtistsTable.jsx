@@ -25,13 +25,18 @@ const ArtistsTable = (items) => {
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
+            <TableCell>Genre</TableCell>
+            <TableCell>Popularity</TableCell>
+            <TableCell>Followers</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {items.items.map((row) => (
             <TableRow key={row.id}>
-                
               <TableCell>{row.name}</TableCell>
+              <TableCell>{row.genres[0]}</TableCell>
+              <TableCell>{row.popularity}</TableCell>
+              <TableCell>{row.followers.total}</TableCell>
             </TableRow>
           ))}
         </TableBody>
