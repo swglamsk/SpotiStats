@@ -30,7 +30,6 @@ const TopTracks = () => {
   });
 
   const token = useSelector((state) => getToken(state));
-  console.log(token);
 
   React.useEffect(() => {
     const getTopTracks = async () => {
@@ -38,14 +37,11 @@ const TopTracks = () => {
       let spotifyApi = new SpotifyWebApi();
       spotifyApi.setAccessToken(token);
       let tracks = await spotifyApi.getMyTopTracks({ "limit": "9" });
-      console.log("elo melo tracks.items")
-      console.log(tracks.items);
       setState({
         items: tracks.items,
       });
     }; 
     if (token) {
-      console.log(token);
       getTopTracks();
     }
   }, [token]);

@@ -12,7 +12,6 @@ const Player = () => {
     progress_ms: null,
   });
   const token = useSelector((state) => getToken(state));
-  console.log(token);
   React.useEffect(() => {
     const getCurrentlyPlaying = async () => {
       // Make a call using the token
@@ -26,7 +25,6 @@ const Player = () => {
       });
     };
     if (token) {
-      console.log(token);
       getCurrentlyPlaying();
     }
   }, [token]);
