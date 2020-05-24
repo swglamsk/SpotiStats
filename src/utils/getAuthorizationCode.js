@@ -7,7 +7,6 @@ export const getAuthorizationCode = () => {
     scopes.forEach(function (item, index) {
         scopes_string += (item + "%20");
     });
-    console.log(scopes_string);
 
     window.location.href
     = authEndpoint

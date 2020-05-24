@@ -30,21 +30,17 @@ const TopArtists = () => {
   });
 
   const token = useSelector((state) => getToken(state));
-  console.log(token);
 
   React.useEffect(() => {
     const getTopArtists = async () => {
       let spotifyApi = new SpotifyWebApi();
       spotifyApi.setAccessToken(token);
       let artists = await spotifyApi.getMyTopArtists({ "limit": "9" });
-      console.log("elo melo artists.items")
-      console.log(artists.items);
       setState({
         items: artists.items,
       });
     }; 
     if (token) {
-      console.log(token);
       getTopArtists();
     }
   }, [token]);

@@ -23,10 +23,8 @@ const App = () => {
       setHasCredentials(true);
     } else {
       const code = getQueryParameter("code");
-      console.log(code);
       if (code) {
         getAccessToken(code).then((data) => {
-          console.log(data);
           if (data.access_token) {
             dispatch(addToken(data.access_token));
             sessionStorage.setItem("token", data.access_token);
