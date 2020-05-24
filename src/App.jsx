@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "./App.css";
 import Player from "./Player";
 import RecentSongs from "./RecentSongs";
+import TopArtists from "./TopArtists";
 import { getToken } from "./store/token/selectors";
 import { getQueryParameter } from "./utils/getQueryParameter";
 import { getAccessToken } from "./utils/getAccessToken";
@@ -41,6 +42,7 @@ const App = () => {
     <BrowserRouter>
     <Route exact path = "/" component = {LandingPage}/>
     <Route path = "/recent" component = {RecentSongs}/>
+    <Route path = "/top-artists" component = {TopArtists}/>
     </BrowserRouter>
   );
 };

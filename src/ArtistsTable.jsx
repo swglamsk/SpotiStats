@@ -15,31 +15,31 @@ const useStyles = makeStyles({
   },
 });
 
-const RecentTable = (items) => {
+const ArtistsTable = (items) => {
   console.log(items);
   const classes = useStyles();
-  console.log("siema");
+  console.log("poopek");
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Album cover</TableCell>
-            <TableCell>Artist</TableCell>
-            <TableCell>Songname</TableCell>
-            <TableCell>Album</TableCell>
+            <TableCell>Photo</TableCell>
+            <TableCell>Name</TableCell>
+            //<TableCell>Songname</TableCell>
+            //<TableCell>Album</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {items.items.map((row) => (
-            <TableRow key={row.track.id}>
+            <TableRow key={row.artists.name}>
                 
               <TableCell component="th" scope="row">
-                <img className="artistCover" src={row.track.album.images[0].url} alt='pic'/>
+                <img className="artistPhoto" src={row.artist.images[0].url} alt='pic'/>
               </TableCell>
               <TableCell>{row.track.artists[0].name}</TableCell>
-              <TableCell>{row.track.name}</TableCell>
-              <TableCell>{row.track.album.name}</TableCell>
+              //<TableCell>{row.track.name}</TableCell>
+              //<TableCell>{row.track.album.name}</TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -47,4 +47,4 @@ const RecentTable = (items) => {
     </TableContainer>
   );
 }
-export default RecentTable;
+export default ArtistsTable;
