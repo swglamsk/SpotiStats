@@ -1,9 +1,7 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./App.css";
-import Player from "./Player";
 import RecentSongs from "./RecentSongs";
-import { getToken } from "./store/token/selectors";
 import { getQueryParameter } from "./utils/getQueryParameter";
 import { getAccessToken } from "./utils/getAccessToken";
 import { addToken } from "./store/token/actions";
