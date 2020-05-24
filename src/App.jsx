@@ -10,6 +10,7 @@ import { getAccessToken } from "./utils/getAccessToken";
 import { addToken } from "./store/token/actions";
 import LandingPage from "./LandingPage";
 import { BrowserRouter, Route } from "react-router-dom";
+import { Navigation } from "./Navigation";
 
 const App = () => {
   const [hasCredentials, setHasCredentials] = React.useState(false);
@@ -36,14 +37,12 @@ const App = () => {
     }
   }, [dispatch, hasCredentials]);
   return (
-    // hasCredentials
-    // ? <Player token={token}/>
-    // : <LandingPage/>
     <BrowserRouter>
-    <Route exact path = "/" component = {LandingPage}/>
-    <Route path = "/recent" component = {RecentSongs}/>
-    <Route path = "/top-artists" component = {TopArtists}/>
-    <Route path = "/top-tracks" component = {TopTracks}/>
+        <Navigation />
+        <Route exact path = "/" component = {LandingPage}/>
+        <Route path = "/recent" component = {RecentSongs}/>
+        <Route path = "/top-artists" component = {TopArtists}/>
+        <Route path = "/top-tracks" component = {TopTracks}/>
     </BrowserRouter>
   );
 };
