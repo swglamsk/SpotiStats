@@ -4,7 +4,6 @@ import "./RecentSongs.css";
 import { Box, Button, Grid } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
 import { withStyles } from "@material-ui/core/styles";
-import { FormatListNumbered, Folder, TrendingUp } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getToken } from "./store/token/selectors";

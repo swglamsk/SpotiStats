@@ -7,7 +7,8 @@ import { withStyles } from "@material-ui/core/styles";
 import { FormatListNumbered, Folder, TrendingUp } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
 import { getToken } from "./store/token/selectors";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addToken } from "./store/token/actions";
 import SpotifyWebApi from "spotify-web-api-js";
 import Player from "./Player";
 const ColorButton = withStyles((theme) => ({
@@ -47,13 +48,22 @@ const LandingPage = () => {
     }
   }, [token]);
 
+  const dispatch = useDispatch();
+
+  const logOut = () => {
+    dispatch(addToken(null));
+    sessionStorage.removeItem("token");
+  };
+
   return (
     <div>
       <div className="topnav">
         <a href ="#test" onClick={() => history.push("/recent")} >Recent tracks</a>
         <a href="#news" onClick={() => history.push("/top-artists")} >Top albums and tracks</a>
         <a href="#contact">Compare artists</a>
-        {token ? <a href="#about">Log out</a> : <a href="#about">Log in</a>}
+        {token
+            ? <a href="#" onClick={() => logOut()}>Log out</a>
+            : <a href="#" onClick={() => getAuthorizationCode()}>Log in</a>}
       </div>
 
       <div className="containerLogin">
