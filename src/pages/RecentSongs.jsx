@@ -6,7 +6,7 @@ import { getToken } from "../store/token/selectors";
 import SpotifyWebApi from "spotify-web-api-js";
 import RecentTable from "../components/recentSongs/RecentTable"
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
     gridInfo: {
         borderTop: "2px solid black",
         width: "100%",
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
         flex: "1",
         textAlign: "center"
     },
-}));
+});
 
 const RecentSongs = () => {
   const [state, setState] = React.useState({

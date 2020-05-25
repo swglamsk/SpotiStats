@@ -7,7 +7,7 @@ import SpotifyWebApi from 'spotify-web-api-js';
 import { TopDisplayGrid } from '../components/shared/TopDisplayGrid';
 import { ColorButton } from '../components/shared/ColorButton';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
     button: {
         position: 'absolute',
         right: 10,
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
         flex: 1,
         textAlign: 'center',
     },
-}));
+});
 
 const TopArtists = () => {
     const history = useHistory();
