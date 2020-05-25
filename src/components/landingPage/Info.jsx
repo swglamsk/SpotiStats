@@ -10,8 +10,7 @@ const useStyles = makeStyles({
         width: '100%',
         marginBottom: 0,
         marginTop: 'auto',
-        textAlign: 'justify',
-        paddingBottom: 30
+        textAlign: 'justify'
     },
     gridItem: {
         display: 'flex',

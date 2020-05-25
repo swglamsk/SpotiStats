@@ -14,8 +14,8 @@ const useStyles = makeStyles({
         display: 'flex',
         flexDirection: 'column',
         width: '100vw',
-        height: '100vh',
-        overflow: 'hidden'
+        height: 'calc(100vh - 65px)',
+        overflow: 'hidden',
     },
     containerLogin: {
         display: 'flex',
