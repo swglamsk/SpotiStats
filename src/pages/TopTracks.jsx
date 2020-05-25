@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getToken } from '../store/token/selectors';
 import SpotifyWebApi from 'spotify-web-api-js';
-import { TopDisplayGrid } from '../components/shared/TopDisplayGrid';
+import { TopTracksGrid } from '../components/topTracks/TopTracksGrid';
 import { ColorButton } from '../components/shared/ColorButton';
 
 const useStyles = makeStyles({
@@ -54,7 +54,7 @@ const TopTracks = () => {
             >
                 Switch to Top Artists
             </ColorButton>
-            {state.items && <TopDisplayGrid list={state.items} />}
+            {state.items && <TopTracksGrid list={state.items} />}
         </div>
     );
 };
