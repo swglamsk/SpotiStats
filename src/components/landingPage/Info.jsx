@@ -57,10 +57,7 @@ export const Info = () => {
                     </div>
                 </div>
                 <div>
-                    Lorem ipsum dolor sit amet enim. Etiam ullamcorper.
-                    Suspendisse a pellentesque dui, non felis. Maecenas
-                    malesuada elit lectus felis, malesuada ultricies. Curabitur
-                    et ligula. Ut molestie a, ultricies porta urna. Vestibulum
+                    List your recently played songs
                 </div>
             </Grid>
             <Grid item xs={3} className={classes.gridItem}>
@@ -73,10 +70,7 @@ export const Info = () => {
                     </div>
                 </div>
                 <div>
-                    Lorem ipsum dolor sit amet enim. Etiam ullamcorper.
-                    Suspendisse a pellentesque dui, non felis. Maecenas
-                    malesuada elit lectus felis, malesuada ultricies. Curabitur
-                    et ligula. Ut molestie a, ultricies porta urna. Vestibulum
+                    See your favorite songs and artists based on calculated affinity.
                 </div>
             </Grid>
             <Grid item xs={3} className={classes.gridItem}>
@@ -89,10 +83,7 @@ export const Info = () => {
                     </div>
                 </div>
                 <div>
-                    Lorem ipsum dolor sit amet enim. Etiam ullamcorper.
-                    Suspendisse a pellentesque dui, non felis. Maecenas
-                    malesuada elit lectus felis, malesuada ultricies. Curabitur
-                    et ligula. Ut molestie a, ultricies porta urna. Vestibulum
+                    Compare artists based on total followers or recent popularity.
                 </div>
             </Grid>
         </Grid>
