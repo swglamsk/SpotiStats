@@ -56,7 +56,7 @@ export const Navigation = () => {
         ? <div className={classes.root}>
             <button onClick={() => history.push("/recent")} >Recent tracks</button>
             <button onClick={() => history.push("/top-artists")}>
-                Top albums and tracks
+                Top artists and tracks
             </button>
             <button onClick={() => history.push("/compare-artists")}>Compare artists</button>
             {token
