@@ -9,6 +9,7 @@ import { addToken } from "./store/token/actions";
 import LandingPage from "./pages/LandingPage";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
+import { CompareArtists } from "./pages/CompareArtists";
 
 const App = () => {
   const [hasCredentials, setHasCredentials] = React.useState(false);
@@ -39,6 +40,7 @@ const App = () => {
         <Route path = "/recent" component = {RecentSongs}/>
         <Route path = "/top-artists" component = {TopArtists}/>
         <Route path = "/top-tracks" component = {TopTracks}/>
+        <Route path = "/compare-artists" component = {CompareArtists}/>
     </BrowserRouter>
   );
 };

@@ -35,6 +35,7 @@ const TopArtists = () => {
             let spotifyApi = new SpotifyWebApi();
             spotifyApi.setAccessToken(token);
             let artists = await spotifyApi.getMyTopArtists({ limit: '9' });
+            console.log(await spotifyApi.searchArtists('Metallica'));
             console.log(artists);
             setState({
                 items: artists.items,

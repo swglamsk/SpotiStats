@@ -58,7 +58,7 @@ export const Navigation = () => {
             <button onClick={() => history.push("/top-artists")}>
                 Top albums and tracks
             </button>
-            <button>Compare artists</button>
+            <button onClick={() => history.push("/compare-artists")}>Compare artists</button>
             {token
                 ? <button onClick={() => logOut()}>Log out</button>
                 : <button onClick={() => getAuthorizationCode()}>Log in</button>}
