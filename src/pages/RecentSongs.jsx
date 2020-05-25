@@ -8,7 +8,6 @@ import RecentTable from "../components/recentSongs/RecentTable"
 
 const useStyles = makeStyles({
     gridInfo: {
-        borderTop: "2px solid black",
         width: "100%",
         '> *': {
             flex: "1"
@@ -58,7 +57,7 @@ const RecentSongs = () => {
           <Grid item className={classes.gridItem}>
             <div className={classes.gridItemChild}>
               <div className={classes.gridText}>
-                Recent Tracks List
+                <h2>Recent Tracks List</h2>
               </div>
             </div>
             {state.items && <RecentTable items={state.items}/>}

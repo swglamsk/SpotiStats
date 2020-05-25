@@ -47,7 +47,7 @@ const TopTracks = () => {
 
     return (
         <div>
-            <div className={classes.label}>Top Tracks List</div>
+            <div className={classes.label}><h2>Top Tracks List</h2></div>
             <ColorButton
                 className={classes.button}
                 onClick={() => history.push('/top-artists')}

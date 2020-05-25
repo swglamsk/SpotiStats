@@ -11,9 +11,12 @@ import SpotifyWebApi from 'spotify-web-api-js';
 const useStyles = makeStyles({
     root: {
         overflow: 'hidden',
-        backgroundColor: '#333',
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
         display: 'flex',
         justifyContent: 'center',
+        alignItems: 'center',
+        position: 'fixed',
+        width: '100%',
         marginBottom: 8,
         '& button': {
             all: 'unset',
@@ -41,7 +44,7 @@ const useStyles = makeStyles({
         borderRadius: '50%',
         width: 40,
         height: 40,
-        margin: 'auto 10px auto 10px',
+        margin: '10px 10px',
 
     },
 });

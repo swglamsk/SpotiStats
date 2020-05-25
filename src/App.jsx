@@ -10,8 +10,17 @@ import LandingPage from "./pages/LandingPage";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
 import { CompareArtists } from "./pages/CompareArtists";
+import { makeStyles } from "@material-ui/core";
+
+
+const useStyles = makeStyles({
+  root: {
+    paddingTop: 75
+  }
+})
 
 const App = () => {
+  const classes = useStyles()
   const [hasCredentials, setHasCredentials] = React.useState(false);
   const dispatch = useDispatch();
 
@@ -36,11 +45,14 @@ const App = () => {
   return (
     <BrowserRouter>
         <Navigation />
+        <div className ={classes.root} >
         <Route exact path = "/" component = {LandingPage}/>
         <Route path = "/recent" component = {RecentSongs}/>
         <Route path = "/top-artists" component = {TopArtists}/>
         <Route path = "/top-tracks" component = {TopTracks}/>
         <Route path = "/compare-artists" component = {CompareArtists}/>
+        </div>
+
     </BrowserRouter>
   );
 };
