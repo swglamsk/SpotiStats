@@ -53,7 +53,7 @@ export const Info = () => {
                         <FormatListNumbered fontSize="inherit" />
                     </div>
                     <div className={classes.gridText}>
-                        <a href="#tracks">Recent Tracks List</a>
+                        <a href="/recent">Recent Tracks List</a>
                     </div>
                 </div>
                 <div>
@@ -66,7 +66,7 @@ export const Info = () => {
                         <Folder fontSize="inherit" />
                     </div>
                     <div className={classes.gridText}>
-                        <a href="#top">Top Albums and Artists </a>
+                        <a href="/top-artists">Top Albums and Artists </a>
                     </div>
                 </div>
                 <div>
@@ -79,7 +79,7 @@ export const Info = () => {
                         <TrendingUp fontSize="inherit" />
                     </div>
                     <div className={classes.gridText}>
-                        <a href="#compare">Compare artists</a>
+                        <a href="/compare-artists">Compare artists</a>
                     </div>
                 </div>
                 <div>

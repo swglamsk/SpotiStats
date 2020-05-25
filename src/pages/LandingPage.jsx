@@ -65,11 +65,7 @@ const LandingPage = () => {
 
     const logged = (
         <>
-            <img
-                className={classes.profilepic}
-                src={state.profileImageURL}
-                alt="yourpic"
-            />
+
             Hello {state.name} :)
         </>
     );
@@ -103,7 +99,8 @@ const LandingPage = () => {
                     {token ? logged : unlogged}
                 </Box>
             </div>
-            {token ? <Player /> : <Info />}
+            {token ? <Player /> : null}
+            <Info />
         </div>
     );
 };
