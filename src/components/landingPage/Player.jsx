@@ -9,8 +9,7 @@ const useStyles = makeStyles({
     root: {
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center'
+        flex: 2
     },
     name: {
         fontSize: '1.5em',

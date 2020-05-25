@@ -10,9 +10,18 @@ import Player from '../components/landingPage/Player';
 import { ColorButton } from '../components/shared/ColorButton';
 
 const useStyles = makeStyles((theme) => ({
+    root: {
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100vw',
+        height: '100vh',
+        paddingBottom: 30
+    },
     containerLogin: {
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1
     },
     boxLogin: {
         alignItems: 'center',
@@ -20,22 +29,24 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
     },
     buttonLogin: {
-        marginTop: 8
+        marginTop: 8,
     },
     gridInfo: {
         borderTop: '2px solid black',
+        paddingTop: 10,
         width: '100%',
-        '> *': {
-            flex: 1
-        }
+        marginBottom: 0,
+        marginTop: 'auto',
+        textAlign: 'justify'
     },
     gridItem: {
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
     },
     gridItemChild: {
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: 10
     },
     gridIcon: {
         display: 'flex',
@@ -49,12 +60,12 @@ const useStyles = makeStyles((theme) => ({
     gridText: {
         fontWeight: 'bold',
         flex: 1,
-        textAlign: 'center'
+        textAlign: 'center',
     },
     profilepic: {
         borderRadius: '50%',
         width: 50,
-        height: 50
+        height: 50,
     },
 }));
 
@@ -84,7 +95,7 @@ const LandingPage = () => {
     }, [token]);
 
     return (
-        <div>
+        <div className={classes.root}>
             <div className={classes.containerLogin}>
                 <Box
                     component="div"
@@ -122,66 +133,64 @@ const LandingPage = () => {
             {token ? (
                 <Player />
             ) : (
-                <div>
-                    <Grid
-                        container
-                        className={classes.gridInfo}
-                        spacing={2}
-                        justify="center"
-                    >
-                        <Grid item className={classes.gridItem}>
-                            <div className={classes.gridItemChild}>
-                                <div className={classes.gridIcon}>
-                                    <FormatListNumbered fontSize="inherit" />
-                                </div>
-                                <div className={classes.gridText}>
-                                    <a href="#tracks">Recent Tracks List</a>
-                                </div>
+                <Grid
+                    container
+                    className={classes.gridInfo}
+                    spacing={2}
+                    justify="center"
+                >
+                    <Grid item xs={3} className={classes.gridItem}>
+                        <div className={classes.gridItemChild}>
+                            <div className={classes.gridIcon}>
+                                <FormatListNumbered fontSize="inherit" />
                             </div>
-                            <div>
-                                Lorem ipsum dolor sit amet enim. Etiam
-                                ullamcorper. Suspendisse a pellentesque dui, non
-                                felis. Maecenas malesuada elit lectus felis,
-                                malesuada ultricies. Curabitur et ligula. Ut
-                                molestie a, ultricies porta urna. Vestibulum
+                            <div className={classes.gridText}>
+                                <a href="#tracks">Recent Tracks List</a>
                             </div>
-                        </Grid>
-                        <Grid item className={classes.gridItem}>
-                            <div className={classes.gridItemChild}>
-                                <div className={classes.gridIcon}>
-                                    <Folder fontSize="inherit" />
-                                </div>
-                                <div className={classes.gridText}>
-                                    <a href="#top">Top Albums and Artists </a>
-                                </div>
-                            </div>
-                            <div>
-                                Lorem ipsum dolor sit amet enim. Etiam
-                                ullamcorper. Suspendisse a pellentesque dui, non
-                                felis. Maecenas malesuada elit lectus felis,
-                                malesuada ultricies. Curabitur et ligula. Ut
-                                molestie a, ultricies porta urna. Vestibulum
-                            </div>
-                        </Grid>
-                        <Grid item className={classes.gridItem}>
-                            <div className={classes.gridItemChild}>
-                                <div className={classes.gridIcon}>
-                                    <TrendingUp fontSize="inherit" />
-                                </div>
-                                <div className={classes.gridText}>
-                                    <a href="#compare">Compare artists</a>
-                                </div>
-                            </div>
-                            <div>
-                                Lorem ipsum dolor sit amet enim. Etiam
-                                ullamcorper. Suspendisse a pellentesque dui, non
-                                felis. Maecenas malesuada elit lectus felis,
-                                malesuada ultricies. Curabitur et ligula. Ut
-                                molestie a, ultricies porta urna. Vestibulum
-                            </div>
-                        </Grid>
+                        </div>
+                        <div>
+                            Lorem ipsum dolor sit amet enim. Etiam ullamcorper.
+                            Suspendisse a pellentesque dui, non felis. Maecenas
+                            malesuada elit lectus felis, malesuada ultricies.
+                            Curabitur et ligula. Ut molestie a, ultricies porta
+                            urna. Vestibulum
+                        </div>
                     </Grid>
-                </div>
+                    <Grid item  xs={3} className={classes.gridItem}>
+                        <div className={classes.gridItemChild}>
+                            <div className={classes.gridIcon}>
+                                <Folder fontSize="inherit" />
+                            </div>
+                            <div className={classes.gridText}>
+                                <a href="#top">Top Albums and Artists </a>
+                            </div>
+                        </div>
+                        <div>
+                            Lorem ipsum dolor sit amet enim. Etiam ullamcorper.
+                            Suspendisse a pellentesque dui, non felis. Maecenas
+                            malesuada elit lectus felis, malesuada ultricies.
+                            Curabitur et ligula. Ut molestie a, ultricies porta
+                            urna. Vestibulum
+                        </div>
+                    </Grid>
+                    <Grid item  xs={3} className={classes.gridItem}>
+                        <div className={classes.gridItemChild}>
+                            <div className={classes.gridIcon}>
+                                <TrendingUp fontSize="inherit" />
+                            </div>
+                            <div className={classes.gridText}>
+                                <a href="#compare">Compare artists</a>
+                            </div>
+                        </div>
+                        <div>
+                            Lorem ipsum dolor sit amet enim. Etiam ullamcorper.
+                            Suspendisse a pellentesque dui, non felis. Maecenas
+                            malesuada elit lectus felis, malesuada ultricies.
+                            Curabitur et ligula. Ut molestie a, ultricies porta
+                            urna. Vestibulum
+                        </div>
+                    </Grid>
+                </Grid>
             )}
         </div>
     );
