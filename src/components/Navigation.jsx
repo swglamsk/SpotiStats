@@ -5,6 +5,8 @@ import { getToken } from "../store/token/selectors";
 import { addToken } from "../store/token/actions";
 import { getAuthorizationCode } from "../utils/getAuthorizationCode";
 import { makeStyles } from "@material-ui/core/styles";
+import SpotifyWebApi from 'spotify-web-api-js';
+
 
 const useStyles = makeStyles({
     root: {
@@ -35,6 +37,13 @@ const useStyles = makeStyles({
             }
         }
     },
+    profilepic: {
+        borderRadius: '50%',
+        width: 40,
+        height: 40,
+        margin: 'auto 10px auto 10px',
+
+    },
 });
 
 export const Navigation = () => {
@@ -43,6 +52,12 @@ export const Navigation = () => {
     const token = useSelector((state) => getToken(state));
     const classes = useStyles();
 
+    const [state, setState] = React.useState({
+        id: null,
+        name: null,
+        profileImageURL: null,
+    });
+
     const dispatch = useDispatch();
 
     const logOut = () => {
@@ -50,6 +65,32 @@ export const Navigation = () => {
       sessionStorage.removeItem("token");
       history.push('/');
     };
+
+    React.useEffect(() => {
+        const getUserData = async () => {
+            let spotifyApi = new SpotifyWebApi();
+            spotifyApi.setAccessToken(token);
+            let userData = await spotifyApi.getMe();
+            setState({
+                id: userData.id,
+                name: userData.display_name,
+                profileImageURL: userData.images[0].url,
+            });
+        };
+        if (token) {
+            getUserData();
+        }
+    }, [token]);
+
+    const profilePic = (
+        <>
+            <img
+                className={classes.profilepic}
+                src={state.profileImageURL}
+                alt="yourpic"
+            />
+        </>
+    );
 
     return (
         token
@@ -62,6 +103,7 @@ export const Navigation = () => {
             {token
                 ? <button onClick={() => logOut()}>Log out</button>
                 : <button onClick={() => getAuthorizationCode()}>Log in</button>}
+            {profilePic}
         </div>
         : null
     );
