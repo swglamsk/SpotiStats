@@ -1,16 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import "./App.css";
-import RecentSongs from "./RecentSongs";
-import TopArtists from "./TopArtists";
-import TopTracks from "./TopTracks";
-import { getToken } from "./store/token/selectors";
+import RecentSongs from "./pages/RecentSongs";
+import TopArtists from "./pages/TopArtists";
+import TopTracks from "./pages/TopTracks";
 import { getQueryParameter } from "./utils/getQueryParameter";
 import { getAccessToken } from "./utils/getAccessToken";
 import { addToken } from "./store/token/actions";
-import LandingPage from "./LandingPage";
+import LandingPage from "./pages/LandingPage";
 import { BrowserRouter, Route } from "react-router-dom";
-import { Navigation } from "./Navigation";
+import { Navigation } from "./components/Navigation";
 
 const App = () => {
   const [hasCredentials, setHasCredentials] = React.useState(false);
