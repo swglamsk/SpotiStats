@@ -55,7 +55,7 @@ const RecentSongs = () => {
 
   return (
     <div>
-        <Grid container className={classes.gridInfo} spacing={2} justify="center">
+        <Grid container className={classes.gridInfo} spacing={0} justify="center">
           <Grid item className={classes.gridItem}>
             <div className={classes.gridItemChild}>
               <div className={classes.gridText}>
