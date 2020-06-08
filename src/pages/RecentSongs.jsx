@@ -1,33 +1,48 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
 import { getToken } from "../store/token/selectors";
 import SpotifyWebApi from "spotify-web-api-js";
-import RecentTable from "../components/recentSongs/RecentTable"
+import RecentTable from "../components/recentSongs/RecentTable";
 
 const useStyles = makeStyles({
-    gridInfo: {
-      paddingTop: 110,
-      
-        width: "100%",
-        '> *': {
-            flex: "1"
-        }
+  gridInfo: {
+    paddingTop: 110,
+
+    width: "100%",
+    "> *": {
+      flex: "1",
     },
-    gridItem: {
-        display: "flex",
-        flexDirection: "column"
-    },
-    gridItemChild: {
-        display: "flex",
-        alignItems: "center"
-    },
-    gridText: {
-        fontWeight: "bold",
-        flex: "1",
-        textAlign: "center"
-    },
+  },
+  gridItem: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  gridItemChild: {
+    display: "flex",
+    alignItems: "center",
+  },
+  gridText: {
+    fontWeight: "bold",
+    flex: "1",
+    textAlign: "center",
+    color: '#ffffff',
+  },
+  bg: {
+    width: "100%",
+    height: "100%",
+    zIndex: -1,
+    position: "fixed",
+    backgroundImage: "linear-gradient(90deg, #c074b2, #8ab5e8)",
+  },
+  premiumbg: {
+    width: "100%",
+    height: "100%",
+    zIndex: -1,
+    position: "fixed",
+    backgroundImage: "linear-gradient(transparent, #000)",
+  },
 });
 
 const RecentSongs = () => {
@@ -54,18 +69,23 @@ const RecentSongs = () => {
   }, [token]);
 
   return (
+    <>
+    <div className={classes.bg}/>
+    <div className={classes.premiumbg}/>
+
     <div>
-        <Grid container className={classes.gridInfo} spacing={0} justify="center">
-          <Grid item className={classes.gridItem}>
-            <div className={classes.gridItemChild}>
-              <div className={classes.gridText}>
-                <h2>Recent Tracks List</h2>
-              </div>
+      <Grid container className={classes.gridInfo} spacing={0} justify="center">
+        <Grid item className={classes.gridItem}>
+          <div className={classes.gridItemChild}>
+            <div className={classes.gridText}>
+              <h2>Recent Tracks List</h2>
             </div>
-            {state.items && <RecentTable items={state.items}/>}
-          </Grid>
+          </div>
+          {state.items && <RecentTable items={state.items} />}
         </Grid>
+      </Grid>
     </div>
+    </>
   );
 };
 export default RecentSongs;
