@@ -4,15 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { getToken } from "../store/token/selectors";
 import { addToken } from "../store/token/actions";
 import { getAuthorizationCode } from "../utils/getAuthorizationCode";
-import { Icon } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
 import SpotifyWebApi from "spotify-web-api-js";
-import { SvgIcon } from "material-ui";
-import { wait } from "@testing-library/react";
 
 const useStyles = makeStyles({
   root: {
@@ -99,6 +96,9 @@ export const Navigation = () => {
     is_playing: null,
   });
 
+  let spotifyApi = new SpotifyWebApi();
+  spotifyApi.setAccessToken(token);
+
   const dispatch = useDispatch();
 
   const logOut = () => {
@@ -108,50 +108,21 @@ export const Navigation = () => {
   };
 
   const nextSong = async () => {
-    let spotifyApi = new SpotifyWebApi();
-    spotifyApi.setAccessToken(token);
-    await spotifyApi.skipToNext();
-    wait(100);
-    await refresh();
+    spotifyApi.skipToNext();
   };
 
   const prevSong = async () => {
-    let spotifyApi = new SpotifyWebApi();
-    spotifyApi.setAccessToken(token);
-    await spotifyApi.skipToPrevious();
-    wait(100);
-    await refresh();
+    spotifyApi.skipToPrevious();
   };
 
   const resumeSong = async () => {
-    let spotifyApi = new SpotifyWebApi();
-    spotifyApi.setAccessToken(token);
-    await spotifyApi.play();
-    wait(100);
-    await refresh();
+    spotifyApi.play();
   };
 
   const pauseSong = async () => {
-    let spotifyApi = new SpotifyWebApi();
-    spotifyApi.setAccessToken(token);
-    await spotifyApi.pause();
-    wait(100);
-    await refresh();
+    spotifyApi.pause();
   };
 
-  const refresh = async () => {
-    let spotifyApi = new SpotifyWebApi();
-    spotifyApi.setAccessToken(token);
-    let userData = await spotifyApi.getMe();
-    let current = await spotifyApi.getMyCurrentPlayingTrack();
-    setState({
-      id: userData.id,
-      name: userData.display_name,
-      profileImageURL: userData.images[0].url,
-      current_playing: current.item,
-      is_playing: current.is_playing,
-    });
-  };
 
   React.useEffect(() => {
     let spotifyApi = new SpotifyWebApi();
@@ -172,7 +143,7 @@ export const Navigation = () => {
       getUserData();
     }
 
-  }, [token, state.item]);
+  }, [token, state]);
 
   const profilePic = (
     <>
@@ -213,6 +184,7 @@ export const Navigation = () => {
         <button onClick={() => history.push("/compare-artists")}>
           Compare artists
         </button>
+        <button onClick = {() => history.push("/genres")}>Genre Wordcloud</button>
         {token ? (
           <button onClick={() => logOut()}>Log out</button>
         ) : (
