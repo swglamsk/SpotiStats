@@ -224,8 +224,8 @@ export const Navigation = () => {
         )}
         {profilePic}
       </div>
-      {state.is_playing ? (
-        <>
+      
+        
           <div className={classes.player}>
             <div className={classes.icon} onClick={() => prevSong()}>
               <SkipPreviousIcon fontSize="large" />
@@ -240,14 +240,15 @@ export const Navigation = () => {
               <SkipNextIcon fontSize="large" />
             </div>
             <div className={classes.icon}>
-              {"Playing: " +
+
+              {state.is_playing ? "Playing: " +
                 state.current_playing.name +
                 " " +
-                state.current_playing.artists[0].name}
+                state.current_playing.artists[0].name : null}
             </div>
           </div>
-        </>
-      ) : null}
+        
+      
     </>
   ) : null;
 };

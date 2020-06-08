@@ -8,7 +8,7 @@ const useStyles = makeStyles({
         borderTop: '2px solid black',
         paddingTop: 10,
         paddingBottom: 30,
-        width: '100%',
+        width: 'calc(100% + 16px)',
         marginBottom: 0,
         marginTop: 'auto',
         textAlign: 'justify',

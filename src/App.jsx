@@ -24,7 +24,7 @@ const useStyles = makeStyles({
       'sans-serif',
     ].join(','),
     letterSpacing: "-0.02em",
-
+    margin:0,
   }
 })
 
