@@ -66,12 +66,7 @@ const Player = () => {
       if (token) {
         getCurrentlyPlaying();
       }
-      const interval = setInterval(() => {
-      if (token) {
-        getCurrentlyPlaying();
-      }
-    }, 10000);
-  }, [token]);
+  }, [token, state.item]);
 
   return state.item ? (
     <div className={classes.root}>

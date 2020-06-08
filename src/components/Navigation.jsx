@@ -171,12 +171,8 @@ export const Navigation = () => {
     if (token) {
       getUserData();
     }
-    const interval = setInterval(() => {
-      if (token) {
-        getUserData();
-      }
-    }, 5000);
-  }, [token]);
+
+  }, [token, state.item]);
 
   const profilePic = (
     <>
