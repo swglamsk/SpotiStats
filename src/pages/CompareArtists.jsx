@@ -6,6 +6,7 @@ import { getToken } from '../store/token/selectors';
 
 const useStyles = makeStyles({
     root: {
+        paddingTop: 110,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',

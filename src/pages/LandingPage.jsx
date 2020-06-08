@@ -14,8 +14,25 @@ const useStyles = makeStyles({
         display: 'flex',
         flexDirection: 'column',
         width: '100vw',
-        height: 'calc(100vh - 65px)',
+        height: 'calc(100vh - 0px)',
         overflow: 'hidden',
+       // backgroundImage: "linear-gradient(90deg, #c074b2, #8ab5e8)",
+        zIndex: 0,
+        paddingTop: 70,
+    },
+    bg: {
+        width: "100%",
+        height: "100%",
+        zIndex: -1,
+        position: "absolute",
+        backgroundImage: "linear-gradient(90deg, #c074b2, #8ab5e8)",
+    },
+    premiumbg: {
+        width: "100%",
+        height: "100%",
+        zIndex: -1,
+        position: "absolute",
+        backgroundImage: "linear-gradient(transparent, #000)",
     },
     containerLogin: {
         display: 'flex',
@@ -27,6 +44,8 @@ const useStyles = makeStyles({
         alignItems: 'center',
         display: 'flex',
         flexDirection: 'column',
+        color: 'white',
+        background: '#494f85',
     },
     buttonLogin: {
         marginTop: 8,
@@ -47,7 +66,10 @@ const LandingPage = () => {
         profileImageURL: null,
     });
 
+
     React.useEffect(() => {
+
+          
         const getUserData = async () => {
             let spotifyApi = new SpotifyWebApi();
             spotifyApi.setAccessToken(token);
@@ -61,6 +83,7 @@ const LandingPage = () => {
         if (token) {
             getUserData();
         }
+     
     }, [token]);
 
     const logged = (
@@ -84,24 +107,32 @@ const LandingPage = () => {
     );
 
     return (
+        <>
+        <div className={classes.bg}/>
+            <div className={classes.premiumbg}/>
         <div className={classes.root}>
+            
             <div className={classes.containerLogin}>
                 <Box
                     component="div"
                     m={4}
                     className={classes.boxLogin}
                     p={2}
-                    border={2}
-                    borderRadius={8}
+
                 >
                     <h2>SpotiStats </h2>
                     Check informations about your music <br />
                     {token ? logged : unlogged}
                 </Box>
             </div>
+            
+
             {token ? <Player /> : null}
             <Info />
+
         </div>
+        
+        </>
     );
 };
 export default LandingPage;

@@ -6,10 +6,10 @@ import { addToken } from "../store/token/actions";
 import { getAuthorizationCode } from "../utils/getAuthorizationCode";
 import { Icon } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import SkipNextIcon from '@material-ui/icons/SkipNext';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import PauseIcon from '@material-ui/icons/Pause';
+import SkipNextIcon from "@material-ui/icons/SkipNext";
+import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import PauseIcon from "@material-ui/icons/Pause";
 import SpotifyWebApi from "spotify-web-api-js";
 import { SvgIcon } from "material-ui";
 import { wait } from "@testing-library/react";
@@ -35,7 +35,14 @@ const useStyles = makeStyles({
       paddingLeft: 16,
       paddingRight: 16,
       textDecoration: "none",
-      fontSize: 17,
+      fontSize: 20,
+      fontFamily: [
+        '"Helvetica Neue"',
+        "Circular",
+        "spotify-circular",
+        "Arial",
+        "sans-serif",
+      ].join(","),
       "&:hover": {
         backgroundColor: "#ddd",
         color: "black",
@@ -56,27 +63,13 @@ const useStyles = makeStyles({
     width: "100%",
     marginBottom: 8,
     marginTop: 60,
-    "& button": {
-      all: "unset",
-      cursor: "pointer",
-      float: "left",
-      color: "#f2f2f2",
-      textAlign: "center",
-      paddingTop: 14,
-      paddingBottom: 14,
-      paddingLeft: 16,
-      paddingRight: 16,
-      textDecoration: "none",
-      fontSize: 17,
-      "&:hover": {
-        backgroundColor: "#ddd",
-        color: "black",
-      },
-      "&.active": {
-        backgroundColor: "#4caf50",
-        color: "white",
-      },
-    },
+    fontFamily: [
+      '"Helvetica Neue"',
+      "Circular",
+      "spotify-circular",
+      "Arial",
+      "sans-serif",
+    ].join(","),
   },
   profilepic: {
     borderRadius: "50%",
@@ -85,7 +78,11 @@ const useStyles = makeStyles({
     margin: "10px 10px",
   },
   icon: {
-      color: "#ffffff",
+    color: "#ffffff",
+  },
+  logo: {
+      paddingRight: 100,
+      color: '#ffffff'
   },
 });
 
@@ -124,10 +121,9 @@ export const Navigation = () => {
     await spotifyApi.skipToPrevious();
     wait(100);
     await refresh();
-
   };
 
-  const resumeSong = async () =>  {
+  const resumeSong = async () => {
     let spotifyApi = new SpotifyWebApi();
     spotifyApi.setAccessToken(token);
     await spotifyApi.play();
@@ -155,12 +151,13 @@ export const Navigation = () => {
       current_playing: current.item,
       is_playing: current.is_playing,
     });
-  }
+  };
 
   React.useEffect(() => {
+    let spotifyApi = new SpotifyWebApi();
+    spotifyApi.setAccessToken(token);
+
     const getUserData = async () => {
-      let spotifyApi = new SpotifyWebApi();
-      spotifyApi.setAccessToken(token);
       let userData = await spotifyApi.getMe();
       let current = await spotifyApi.getMyCurrentPlayingTrack();
       setState({
@@ -174,6 +171,11 @@ export const Navigation = () => {
     if (token) {
       getUserData();
     }
+    const interval = setInterval(() => {
+      if (token) {
+        getUserData();
+      }
+    }, 5000);
   }, [token]);
 
   const profilePic = (
@@ -186,9 +188,28 @@ export const Navigation = () => {
     </>
   );
 
+  const logo = (
+    <>
+    <div className={classes.logo}>
+    <a href="/">
+      <img
+        
+        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.iconsdb.com%2Ficons%2Fdownload%2Fwhite%2Fspotify-512.gif&f=1&nofb=1"
+        alt="logo"
+        color='white'
+        width='50px'
+        height='50px'
+      />
+      <b>{" SpotiStats"}</b>
+      </a>
+      </div>
+    </>
+  );
+
   return token ? (
     <>
       <div className={classes.root}>
+        {logo}
         <button onClick={() => history.push("/recent")}>Recent tracks</button>
         <button onClick={() => history.push("/top-artists")}>
           Top artists and tracks
@@ -207,19 +228,22 @@ export const Navigation = () => {
         <>
           <div className={classes.player}>
             <div className={classes.icon} onClick={() => prevSong()}>
-              <SkipPreviousIcon fontSize="large"/>
+              <SkipPreviousIcon fontSize="large" />
             </div>
             <div className={classes.icon} onClick={() => resumeSong()}>
-              <PlayArrowIcon fontSize="large"/>
+              <PlayArrowIcon fontSize="large" />
             </div>
             <div className={classes.icon} onClick={() => pauseSong()}>
               <PauseIcon fontSize="large" />
             </div>
             <div className={classes.icon} onClick={() => nextSong()}>
-              <SkipNextIcon fontSize="large"/>
+              <SkipNextIcon fontSize="large" />
             </div>
             <div className={classes.icon}>
-                {"Playing: " + state.current_playing.name + " by " + state.current_playing.artists[0].name}
+              {"Playing: " +
+                state.current_playing.name +
+                " " +
+                state.current_playing.artists[0].name}
             </div>
           </div>
         </>
