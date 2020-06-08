@@ -3,6 +3,8 @@ import SpotifyWebApi from 'spotify-web-api-js';
 import { makeStyles } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux';
 import { getToken } from '../store/token/selectors';
+import { ColorButton } from '../components/shared/ColorButton';
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles({
     root: {
@@ -11,6 +13,21 @@ const useStyles = makeStyles({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+        '& > *': {
+            borderColor: 'white',
+            color: '#ffffff',
+          },
+        '& .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'white',
+            color: 'white',
+         },
+         '&:hover fieldset': {
+            borderColor: 'white',
+          },
+         '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'white',
+            color: 'white',
+         },
     },
     artist: {
         display: 'flex',
@@ -19,6 +36,8 @@ const useStyles = makeStyles({
         height: 300,
         justifyContent: 'center',
         alignItems: 'center',
+        color: '#ffffff',
+        fontWeight: 'bold',
     },
     content: {
         display: 'flex',
@@ -29,6 +48,7 @@ const useStyles = makeStyles({
         textAlign: 'center',
         fontSize: 40,
         marginBottom: 20,
+        color: '#ffffff',
     },
     buttonView: {
         display: 'flex',
@@ -46,17 +66,23 @@ const useStyles = makeStyles({
         padding: 'auto',
         fontWeight: 'bold',
         fontSize: 30,
+        color: '#ffffff',
     },
-    button: {
-        all: 'unset',
-        border: '1px solid black',
+    button: {        
         padding: '5px 10px',
+        marginTop: 8,
+        fontWeight: 'bold',
+        fontSize: 15,
         marginBottom: 10,
         textDecoration: 'none',
+        borderRadius: '500px',
+        width: '100%',
     },
     input: {
         marginBottom: 10,
         marginTop: 'auto',
+        borderRadius: '500px',
+        color: '#ffffff',
     },
     image: {
         width: 200,
@@ -71,6 +97,20 @@ const useStyles = makeStyles({
         justifyContent: 'center',
         marginBottom: 10,
     },
+    bg: {
+        width: "100%",
+        height: "100%",
+        zIndex: -1,
+        position: "fixed",
+        backgroundImage: "linear-gradient(90deg, #c074b2, #8ab5e8)",
+      },
+      premiumbg: {
+        width: "100%",
+        height: "100%",
+        zIndex: -1,
+        position: "fixed",
+        backgroundImage: "linear-gradient(transparent, #000)",
+      },
 });
 
 export const CompareArtists = () => {
@@ -114,28 +154,37 @@ export const CompareArtists = () => {
         <div className={classes.artist}>
             <div className={classes.image}>{artist && artistImage(artist)}</div>
             {artist && artistInfo(artist)}
-            <input
+            <TextField
                 type='text'
                 placeholder='Enter artists name'
                 onChange={(e) => setInput(e.target.value)}
                 value={input}
+                label='Artist name'
+                variant='outlined'
+                InputProps={{className: classes.input}}
+                id="mui-theme-provider-outlined-input"
+                
             />
         </div>
     );
 
     return (
+        <>
+        <div className={classes.bg}/>
+        <div className={classes.premiumbg}/>
         <div className={classes.root}>
             <div className={classes.label}>Compare Artists</div>
             <div className={classes.content}>
                 {artist(firstArtist, firstInput, setFirstInput)}
                 <div className={classes.buttonView}>
                     <div className={classes.versus}>VS</div>
-                    <button className={classes.button} onClick={searchArtists}>
+                    <ColorButton className={classes.button} onClick={searchArtists}>
                         Start
-                    </button>
+                    </ColorButton>
                 </div>
                 {artist(secondArtist, secondInput, setSecondInput)}
             </div>
         </div>
+        </>
     );
 };

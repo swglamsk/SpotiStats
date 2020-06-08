@@ -20,7 +20,22 @@ const useStyles = makeStyles({
         fontWeight: 'bold',
         flex: 1,
         textAlign: 'center',
+        color: "#ffffff",
     },
+    bg: {
+        width: "100%",
+        height: "100%",
+        zIndex: -1,
+        position: "fixed",
+        backgroundImage: "linear-gradient(90deg, #c074b2, #8ab5e8)",
+      },
+      premiumbg: {
+        width: "100%",
+        height: "100%",
+        zIndex: -1,
+        position: "fixed",
+        backgroundImage: "linear-gradient(transparent, #000)",
+      },
 });
 
 const TopArtists = () => {
@@ -50,6 +65,9 @@ const TopArtists = () => {
     }, [token]);
 
     return (
+        <>
+        <div className={classes.bg}/>
+        <div className={classes.premiumbg}/>
         <div className={classes.root}>
             <div className={classes.label}><h2>Top Artists List</h2></div>
             <ColorButton
@@ -60,6 +78,7 @@ const TopArtists = () => {
             </ColorButton>
             {state.items && <TopDisplayGrid list={state.items} />}
         </div>
+        </>
     );
 };
 export default TopArtists;
