@@ -66,7 +66,7 @@ const Player = () => {
       if (token) {
         getCurrentlyPlaying();
       }
-  }, [token, state.item]);
+  }, [token, state]);
 
   return state.item ? (
     <div className={classes.root}>

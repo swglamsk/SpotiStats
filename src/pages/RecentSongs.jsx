@@ -1,33 +1,33 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
 import { getToken } from "../store/token/selectors";
 import SpotifyWebApi from "spotify-web-api-js";
-import RecentTable from "../components/recentSongs/RecentTable"
+import RecentTable from "../components/recentSongs/RecentTable";
 
 const useStyles = makeStyles({
-    gridInfo: {
-      paddingTop: 110,
-      
-        width: "100%",
-        '> *': {
-            flex: "1"
-        }
+  gridInfo: {
+    paddingTop: 110,
+
+    width: "100%",
+    "> *": {
+      flex: "1",
     },
-    gridItem: {
-        display: "flex",
-        flexDirection: "column"
-    },
-    gridItemChild: {
-        display: "flex",
-        alignItems: "center"
-    },
-    gridText: {
-        fontWeight: "bold",
-        flex: "1",
-        textAlign: "center"
-    },
+  },
+  gridItem: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  gridItemChild: {
+    display: "flex",
+    alignItems: "center",
+  },
+  gridText: {
+    fontWeight: "bold",
+    flex: "1",
+    textAlign: "center",
+  },
 });
 
 const RecentSongs = () => {
@@ -55,16 +55,16 @@ const RecentSongs = () => {
 
   return (
     <div>
-        <Grid container className={classes.gridInfo} spacing={0} justify="center">
-          <Grid item className={classes.gridItem}>
-            <div className={classes.gridItemChild}>
-              <div className={classes.gridText}>
-                <h2>Recent Tracks List</h2>
-              </div>
+      <Grid container className={classes.gridInfo} spacing={0} justify="center">
+        <Grid item className={classes.gridItem}>
+          <div className={classes.gridItemChild}>
+            <div className={classes.gridText}>
+              <h2>Recent Tracks List</h2>
             </div>
-            {state.items && <RecentTable items={state.items}/>}
-          </Grid>
+          </div>
+          {state.items && <RecentTable items={state.items} />}
         </Grid>
+      </Grid>
     </div>
   );
 };

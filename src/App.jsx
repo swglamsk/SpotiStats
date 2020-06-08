@@ -11,6 +11,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
 import { CompareArtists } from "./pages/CompareArtists";
 import { makeStyles } from "@material-ui/core";
+import GenreWordcloud from "./pages/GenreWordcloud"
 
 
 const useStyles = makeStyles({
@@ -60,6 +61,7 @@ const App = () => {
         <Route path = "/top-artists" component = {TopArtists}/>
         <Route path = "/top-tracks" component = {TopTracks}/>
         <Route path = "/compare-artists" component = {CompareArtists}/>
+        <Route path = "/genres" component = {GenreWordcloud}/>
         </div>
 
     </BrowserRouter>
