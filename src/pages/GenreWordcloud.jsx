@@ -10,9 +10,23 @@ const useStyles = makeStyles({
   root: {
     paddingTop: 100,
   },
+  bg: {
+    width: "100%",
+    height: "100%",
+    zIndex: -1,
+    position: "fixed",
+    backgroundImage: "linear-gradient(90deg, #c074b2, #8ab5e8)",
+  },
+  premiumbg: {
+    width: "100%",
+    height: "100%",
+    zIndex: -1,
+    position: "fixed",
+    backgroundImage: "linear-gradient(transparent, #000)",
+  },
 });
 const options = {
-  colors: ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b"],
+  colors: ["#FFF8DC", "#00BFFF", "#FFD700", "#F08080", "#00FF00", "#FFA500"],
   enableTooltip: true,
   deterministic: false,
   fontFamily: "impact",
@@ -78,9 +92,13 @@ const GenreWordcloud = () => {
 
   console.log(dict);
   return (
-    <div className={classes.root}>
+    <>
+    <div className={classes.bg}/>
+    <div className={classes.premiumbg}/>
+    <div className={classes.root}>>
       <ReactWordcloud options={options} words={getDictionary(dict)} />
     </div>
+    </>
   );
 };
 export default GenreWordcloud;
