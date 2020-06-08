@@ -7,33 +7,40 @@ const useStyles = makeStyles({
     gridInfo: {
         borderTop: '2px solid black',
         paddingTop: 10,
+        paddingBottom: 30,
         width: '100%',
         marginBottom: 0,
         marginTop: 'auto',
-        textAlign: 'justify'
+        textAlign: 'justify',
+        background: 'black',
+        
     },
     gridItem: {
         display: 'flex',
         flexDirection: 'column',
+        color: 'white',
     },
     gridItemChild: {
         display: 'flex',
         alignItems: 'center',
         marginBottom: 10,
+ 
     },
     gridIcon: {
         display: 'flex',
         fontSize: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        border: '1px solid black',
+        border: '1px solid white',
         borderRadius: '50%',
         padding: 8,
+        color: 'white',
     },
     gridText: {
         fontWeight: 'bold',
         flex: 1,
         textAlign: 'center',
+        color: 'white',
     },
 });
 

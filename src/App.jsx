@@ -15,7 +15,16 @@ import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
-    paddingTop: 75
+    paddingTop: 0,
+    fontFamily:  [
+      '"Helvetica Neue"',
+      'Circular',
+      'spotify-circular',
+      'Arial',
+      'sans-serif',
+    ].join(','),
+    letterSpacing: "-0.02em",
+
   }
 })
 

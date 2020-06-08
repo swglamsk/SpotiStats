@@ -8,6 +8,8 @@ import RecentTable from "../components/recentSongs/RecentTable"
 
 const useStyles = makeStyles({
     gridInfo: {
+      paddingTop: 110,
+      
         width: "100%",
         '> *': {
             flex: "1"

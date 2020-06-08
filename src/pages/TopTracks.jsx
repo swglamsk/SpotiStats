@@ -8,6 +8,9 @@ import { TopTracksGrid } from '../components/topTracks/TopTracksGrid';
 import { ColorButton } from '../components/shared/ColorButton';
 
 const useStyles = makeStyles({
+    root: {
+        paddingTop: 110,
+    },
     button: {
         position: 'absolute',
         right: 10,
@@ -46,7 +49,7 @@ const TopTracks = () => {
     }, [token]);
 
     return (
-        <div>
+        <div className={classes.root}>
             <div className={classes.label}><h2>Top Tracks List</h2></div>
             <ColorButton
                 className={classes.button}
