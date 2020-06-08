@@ -27,6 +27,21 @@ const useStyles = makeStyles({
     fontWeight: "bold",
     flex: "1",
     textAlign: "center",
+    color: '#ffffff',
+  },
+  bg: {
+    width: "100%",
+    height: "100%",
+    zIndex: -1,
+    position: "fixed",
+    backgroundImage: "linear-gradient(90deg, #c074b2, #8ab5e8)",
+  },
+  premiumbg: {
+    width: "100%",
+    height: "100%",
+    zIndex: -1,
+    position: "fixed",
+    backgroundImage: "linear-gradient(transparent, #000)",
   },
 });
 
@@ -54,6 +69,10 @@ const RecentSongs = () => {
   }, [token]);
 
   return (
+    <>
+    <div className={classes.bg}/>
+    <div className={classes.premiumbg}/>
+
     <div>
       <Grid container className={classes.gridInfo} spacing={0} justify="center">
         <Grid item className={classes.gridItem}>
@@ -66,6 +85,7 @@ const RecentSongs = () => {
         </Grid>
       </Grid>
     </div>
+    </>
   );
 };
 export default RecentSongs;

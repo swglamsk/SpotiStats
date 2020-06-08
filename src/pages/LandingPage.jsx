@@ -49,6 +49,9 @@ const useStyles = makeStyles({
     },
     buttonLogin: {
         marginTop: 8,
+        fontWeight: 'bold',
+        fontSize: 15,
+        borderRadius: '500px',
     },
     profilepic: {
         borderRadius: '50%',
@@ -109,7 +112,7 @@ const LandingPage = () => {
     return (
         <>
         <div className={classes.bg}/>
-            <div className={classes.premiumbg}/>
+        <div className={classes.premiumbg}/>
         <div className={classes.root}>
             
             <div className={classes.containerLogin}>
