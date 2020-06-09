@@ -139,10 +139,7 @@ export const Navigation = () => {
         is_playing: current.is_playing,
       });
     };
-    if (token) {
-      getUserData();
-    }
-    const interval = setInterval(() => {
+    const interval = setTimeout(() => {
       if (token) {
         getUserData();
       }

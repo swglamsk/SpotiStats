@@ -63,14 +63,11 @@ const Player = () => {
           progress_ms: current.progress_ms,
         });
       };
-      if (token) {
-        getCurrentlyPlaying();
-      }
-      const interval = setInterval(() => {
+      const interval = setTimeout(() => {
         if (token) {
           getCurrentlyPlaying();
         }
-      }, 10000);
+      }, 5000);
   }, [token, state]);
 
   return state.item ? (
