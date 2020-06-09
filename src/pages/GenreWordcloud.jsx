@@ -47,15 +47,14 @@ const GenreWordcloud = () => {
   const [dict, setDict] = React.useState(null);
   const token = useSelector((state) => getToken(state));
 
+
   React.useEffect(() => {
-    console.log(token);
-    const getTopArtists = async () => {
-      let spotifyApi = new SpotifyWebApi();
-      spotifyApi.setAccessToken(token);
-      let artists = await spotifyApi.getMyTopArtists({ limit: "50" });
-      setItems(artists.items);
-      makeDictionary();
-    };
+    function addOccurence(map, word) {
+        if (map.has(word)) {
+          map.set(word, map.get(word) + 1);
+        } else map.set(word, 1);
+      }
+    
     function makeDictionary() {
       if (!items) return;
 
@@ -68,17 +67,22 @@ const GenreWordcloud = () => {
       });
       setDict(dictCopy);
     }
+    makeDictionary();
+  },[items])
+  React.useEffect(() => {
+    console.log(token);
+    const getTopArtists = async () => {
+      let spotifyApi = new SpotifyWebApi();
+      spotifyApi.setAccessToken(token);
+      let artists = await spotifyApi.getMyTopArtists({ limit: "50" });
+      setItems(artists.items);
+    };
 
     if (token) {
       getTopArtists();
     }
-  }, [token, items]);
+  }, [token]);
 
-  function addOccurence(map, word) {
-    if (map.has(word)) {
-      map.set(word, map.get(word) + 1);
-    } else map.set(word, 1);
-  }
 
   function getDictionary(map) {
     if (!map) return;

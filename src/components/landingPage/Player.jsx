@@ -66,6 +66,11 @@ const Player = () => {
       if (token) {
         getCurrentlyPlaying();
       }
+      const interval = setInterval(() => {
+        if (token) {
+          getCurrentlyPlaying();
+        }
+      }, 10000);
   }, [token, state]);
 
   return state.item ? (

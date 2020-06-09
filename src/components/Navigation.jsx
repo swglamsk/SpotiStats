@@ -142,8 +142,13 @@ export const Navigation = () => {
     if (token) {
       getUserData();
     }
+    const interval = setInterval(() => {
+      if (token) {
+        getUserData();
+      }
+    }, 5000);
 
-  }, [token, state]);
+  }, [token, state.current_playing]);
 
   const profilePic = (
     <>
