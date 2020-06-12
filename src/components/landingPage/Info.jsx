@@ -13,17 +13,20 @@ const useStyles = makeStyles({
         marginTop: 'auto',
         textAlign: 'justify',
         background: 'black',
-        
+        display: 'flex',
+        flexWrap: 'wrap'
     },
     gridItem: {
         display: 'flex',
         flexDirection: 'column',
         color: 'white',
+        minWidth: 300
     },
     gridItemChild: {
         display: 'flex',
         alignItems: 'center',
         marginBottom: 10,
+        minWidth: 300
  
     },
     gridIcon: {

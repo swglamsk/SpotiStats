@@ -21,6 +21,7 @@ const useStyles = makeStyles({
     position: "fixed",
     width: "100%",
     marginBottom: 8,
+    flexWrap: 'wrap',
     "& button": {
       all: "unset",
       cursor: "pointer",
