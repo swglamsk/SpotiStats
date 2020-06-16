@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.bdemtv",
+      "sha256_cert_fingerprints": ["59:20:6A:CD:5F:F8:AF:F6:67:29:4A:73:7F:77:6E:28:AA:8E:58:B5:4C:09:AF:A1:C4:85:B6:01:F0:54:D4:B7"]
+    }
+  }
+]
