@@ -1,49 +1,48 @@
-import * as React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core';
-import { FormatListNumbered, Folder, TrendingUp } from '@material-ui/icons';
+import * as React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { Grid } from "@material-ui/core";
+import { FormatListNumbered, Folder, TrendingUp } from "@material-ui/icons";
 
 const useStyles = makeStyles({
     gridInfo: {
-        borderTop: '2px solid black',
+        borderTop: "2px solid black",
         paddingTop: 10,
         paddingBottom: 30,
-        width: 'calc(100% + 16px)',
+        width: "calc(100% + 16px)",
         marginBottom: 0,
-        marginTop: 'auto',
-        textAlign: 'justify',
-        background: 'black',
-        display: 'flex',
-        flexWrap: 'wrap'
+        marginTop: "auto",
+        textAlign: "justify",
+        background: "black",
+        display: "flex",
+        flexWrap: "wrap",
     },
     gridItem: {
-        display: 'flex',
-        flexDirection: 'column',
-        color: 'white',
-        minWidth: 300
+        display: "flex",
+        flexDirection: "column",
+        color: "white",
+        minWidth: 300,
     },
     gridItemChild: {
-        display: 'flex',
-        alignItems: 'center',
+        display: "flex",
+        alignItems: "center",
         marginBottom: 10,
-        minWidth: 300
- 
+        minWidth: 300,
     },
     gridIcon: {
-        display: 'flex',
+        display: "flex",
         fontSize: 50,
-        justifyContent: 'center',
-        alignItems: 'center',
-        border: '1px solid white',
-        borderRadius: '50%',
+        justifyContent: "center",
+        alignItems: "center",
+        border: "1px solid white",
+        borderRadius: "50%",
         padding: 8,
-        color: 'white',
+        color: "white",
     },
     gridText: {
-        fontWeight: 'bold',
+        fontWeight: "bold",
         flex: 1,
-        textAlign: 'center',
-        color: 'white',
+        textAlign: "center",
+        color: "white",
     },
 });
 
@@ -66,9 +65,7 @@ export const Info = () => {
                         <a href="/recent">Recent Tracks List</a>
                     </div>
                 </div>
-                <div>
-                    List your recently played songs
-                </div>
+                <div>List your recently played songs</div>
             </Grid>
             <Grid item xs={3} className={classes.gridItem}>
                 <div className={classes.gridItemChild}>
@@ -80,7 +77,8 @@ export const Info = () => {
                     </div>
                 </div>
                 <div>
-                    See your favorite songs and artists based on calculated affinity.
+                    See your favorite songs and artists based on calculated
+                    affinity.
                 </div>
             </Grid>
             <Grid item xs={3} className={classes.gridItem}>
@@ -93,7 +91,8 @@ export const Info = () => {
                     </div>
                 </div>
                 <div>
-                    Compare artists based on total followers or recent popularity.
+                    Compare artists based on total followers or recent
+                    popularity.
                 </div>
             </Grid>
         </Grid>

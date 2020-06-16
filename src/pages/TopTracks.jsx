@@ -1,26 +1,26 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { getToken } from '../store/token/selectors';
-import SpotifyWebApi from 'spotify-web-api-js';
-import { TopTracksGrid } from '../components/topTracks/TopTracksGrid';
-import { ColorButton } from '../components/shared/ColorButton';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getToken } from "../store/token/selectors";
+import SpotifyWebApi from "spotify-web-api-js";
+import { TopTracksGrid } from "../components/topTracks/TopTracksGrid";
+import { ColorButton } from "../components/shared/ColorButton";
 
 const useStyles = makeStyles({
     root: {
         paddingTop: 110,
     },
     button: {
-        position: 'absolute',
+        position: "absolute",
         right: 10,
         top: 60,
     },
     label: {
-        fontWeight: 'bold',
+        fontWeight: "bold",
         flex: 1,
-        textAlign: 'center',
-        color: '#ffffff',
+        textAlign: "center",
+        color: "#ffffff",
     },
     bg: {
         width: "100%",
@@ -28,14 +28,14 @@ const useStyles = makeStyles({
         zIndex: -1,
         position: "fixed",
         backgroundImage: "linear-gradient(90deg, #c074b2, #8ab5e8)",
-      },
-      premiumbg: {
+    },
+    premiumbg: {
         width: "100%",
         height: "100%",
         zIndex: -1,
         position: "fixed",
         backgroundImage: "linear-gradient(transparent, #000)",
-      },
+    },
 });
 
 const TopTracks = () => {
@@ -52,7 +52,7 @@ const TopTracks = () => {
         const getTopTracks = async () => {
             let spotifyApi = new SpotifyWebApi();
             spotifyApi.setAccessToken(token);
-            let tracks = await spotifyApi.getMyTopTracks({ limit: '9' });
+            let tracks = await spotifyApi.getMyTopTracks({ limit: "9" });
             console.log(tracks.items);
             setState({
                 items: tracks.items,
@@ -65,18 +65,20 @@ const TopTracks = () => {
 
     return (
         <>
-        <div className={classes.bg}/>
-        <div className={classes.premiumbg}/>
-        <div className={classes.root}>
-            <div className={classes.label}><h2>Top Tracks List</h2></div>
-            <ColorButton
-                className={classes.button}
-                onClick={() => history.push('/top-artists')}
-            >
-                Switch to Top Artists
-            </ColorButton>
-            {state.items && <TopTracksGrid list={state.items} />}
-        </div>
+            <div className={classes.bg} />
+            <div className={classes.premiumbg} />
+            <div className={classes.root}>
+                <div className={classes.label}>
+                    <h2>Top Tracks List</h2>
+                </div>
+                <ColorButton
+                    className={classes.button}
+                    onClick={() => history.push("/top-artists")}
+                >
+                    Switch to Top Artists
+                </ColorButton>
+                {state.items && <TopTracksGrid list={state.items} />}
+            </div>
         </>
     );
 };

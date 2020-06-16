@@ -1,22 +1,22 @@
-import React from 'react';
-import { getAuthorizationCode } from '../utils/getAuthorizationCode';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box } from '@material-ui/core';
-import { getToken } from '../store/token/selectors';
-import { useSelector } from 'react-redux';
-import SpotifyWebApi from 'spotify-web-api-js';
-import Player from '../components/landingPage/Player';
-import { ColorButton } from '../components/shared/ColorButton';
-import { Info } from '../components/landingPage/Info';
+import React from "react";
+import { getAuthorizationCode } from "../utils/getAuthorizationCode";
+import { makeStyles } from "@material-ui/core/styles";
+import { Box } from "@material-ui/core";
+import { getToken } from "../store/token/selectors";
+import { useSelector } from "react-redux";
+import SpotifyWebApi from "spotify-web-api-js";
+import Player from "../components/landingPage/Player";
+import { ColorButton } from "../components/shared/ColorButton";
+import { Info } from "../components/landingPage/Info";
 
 const useStyles = makeStyles({
     root: {
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100vw',
-        height: 'calc(100vh - 0px)',
-        overflow: 'hidden',
-       // backgroundImage: "linear-gradient(90deg, #c074b2, #8ab5e8)",
+        display: "flex",
+        flexDirection: "column",
+        width: "100vw",
+        height: "calc(100vh - 0px)",
+        overflow: "hidden",
+        // backgroundImage: "linear-gradient(90deg, #c074b2, #8ab5e8)",
         zIndex: 0,
         paddingTop: 70,
     },
@@ -35,26 +35,26 @@ const useStyles = makeStyles({
         backgroundImage: "linear-gradient(transparent, #000)",
     },
     containerLogin: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         flex: 1,
     },
     boxLogin: {
-        alignItems: 'center',
-        display: 'flex',
-        flexDirection: 'column',
-        color: 'white',
-        background: '#494f85',
+        alignItems: "center",
+        display: "flex",
+        flexDirection: "column",
+        color: "white",
+        background: "#494f85",
     },
     buttonLogin: {
         marginTop: 8,
-        fontWeight: 'bold',
+        fontWeight: "bold",
         fontSize: 15,
-        borderRadius: '500px',
+        borderRadius: "500px",
     },
     profilepic: {
-        borderRadius: '50%',
+        borderRadius: "50%",
         width: 50,
         height: 50,
     },
@@ -69,10 +69,7 @@ const LandingPage = () => {
         profileImageURL: null,
     });
 
-
     React.useEffect(() => {
-
-          
         const getUserData = async () => {
             let spotifyApi = new SpotifyWebApi();
             spotifyApi.setAccessToken(token);
@@ -86,15 +83,9 @@ const LandingPage = () => {
         if (token) {
             getUserData();
         }
-     
     }, [token]);
 
-    const logged = (
-        <>
-
-            Hello {state.name} :)
-        </>
-    );
+    const logged = <>Hello {state.name} :)</>;
 
     const unlogged = (
         <>
@@ -111,30 +102,25 @@ const LandingPage = () => {
 
     return (
         <>
-        <div className={classes.bg}/>
-        <div className={classes.premiumbg}/>
-        <div className={classes.root}>
-            
-            <div className={classes.containerLogin}>
-                <Box
-                    component="div"
-                    m={4}
-                    className={classes.boxLogin}
-                    p={2}
+            <div className={classes.bg} />
+            <div className={classes.premiumbg} />
+            <div className={classes.root}>
+                <div className={classes.containerLogin}>
+                    <Box
+                        component="div"
+                        m={4}
+                        className={classes.boxLogin}
+                        p={2}
+                    >
+                        <h2>SpotiStats </h2>
+                        Check informations about your music <br />
+                        {token ? logged : unlogged}
+                    </Box>
+                </div>
 
-                >
-                    <h2>SpotiStats </h2>
-                    Check informations about your music <br />
-                    {token ? logged : unlogged}
-                </Box>
+                {token ? <Player /> : null}
+                <Info />
             </div>
-            
-
-            {token ? <Player /> : null}
-            <Info />
-
-        </div>
-        
         </>
     );
 };
